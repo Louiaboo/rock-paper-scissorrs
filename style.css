@@ -60,4 +60,8 @@ button {
     border-width: 5px;
     border-style: ridge;
     border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5ms;
 }
+
+button:hover {opacity: 0.6;}
