@@ -1,6 +1,9 @@
 let playerScore = 0;
 let computerScore = 0;
+const title = document.querySelector(".title");
 const buttons = document.querySelectorAll("button");
+const pScore = document.querySelector("#player");
+const cScore = document.querySelector("#computer");
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
@@ -32,15 +35,25 @@ function isGameOver() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-
+        title.textContent = `It's a tie! Both chose ${playerSelection}`;
     } else if ((playerSelection === "rock" && computerSelection === "scissors") || 
         (playerSelection === "paper" && computerSelection === "rock") || 
         (playerSelection === "scissors" && computerSelection === "paper")) {
-            giveScore("player");
+        title.textContent = `You Win! ${playerSelection} beats ${computerSelection}`;
+        giveScore("player");
+        pScore.textContent = `${playerScore}`;
+        if (isGameOver()) {
+            title.textContent = `You Won!!!`
+        }
     } else if ((playerSelection === "rock" && computerSelection === "paper") || 
         (playerSelection === "paper" && computerSelection === "scissors") || 
         (playerSelection === "scissors" && computerSelection === "rock")) {
-            giveScore("computer");
+        title.textContent = `You Lost! ${computerSelection} beats ${playerSelection}`
+        giveScore("computer");
+        cScore.textContent = `${computerScore}`;
+        if (isGameOver()) {
+            title.textContent = `You Lost!`;
+        }
     }
 }
 
