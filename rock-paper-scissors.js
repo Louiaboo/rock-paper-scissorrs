@@ -5,28 +5,33 @@ const buttons = document.querySelectorAll("button");
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
     if (choice === 0) {
-        return "rock"
+        return "rock";
     } else if (choice === 1) {
-        return "paper"
+        return "paper";
     } else if (choice === 2) {
-        return "scissors"
+        return "scissors";
+    }
+}
+
+function giveScore(winner) {
+    if (winner === "player") {
+        return playerScore += 1;
+    } else if (winner === "computer") {
+        return computerScore += 1;
     }
 }
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        console.log("It's a tie!");
-        return "tie";
+
     } else if ((playerSelection === "rock" && computerSelection === "scissors") || 
         (playerSelection === "paper" && computerSelection === "rock") || 
         (playerSelection === "scissors" && computerSelection === "paper")) {
-        console.log("player");
-        return "player win";
+        giveScore("player");
     } else if ((playerSelection === "rock" && computerSelection === "paper") || 
         (playerSelection === "paper" && computerSelection === "scissors") || 
         (playerSelection === "scissors" && computerSelection === "rock"))
-        console.log("computer");
-        return "computer win";
+        giveScore("computer");
 }
 
 buttons.forEach((button) => {
