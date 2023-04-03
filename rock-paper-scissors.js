@@ -21,17 +21,27 @@ function giveScore(winner) {
     }
 }
 
+function isGameOver() {
+    if (playerScore > 4 || computerScore > 4) {
+        playerScore = 0;
+        computerScore = 0;
+        return true;
+    }
+    return false;
+}
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
 
     } else if ((playerSelection === "rock" && computerSelection === "scissors") || 
         (playerSelection === "paper" && computerSelection === "rock") || 
         (playerSelection === "scissors" && computerSelection === "paper")) {
-        giveScore("player");
+            giveScore("player");
     } else if ((playerSelection === "rock" && computerSelection === "paper") || 
         (playerSelection === "paper" && computerSelection === "scissors") || 
-        (playerSelection === "scissors" && computerSelection === "rock"))
-        giveScore("computer");
+        (playerSelection === "scissors" && computerSelection === "rock")) {
+            giveScore("computer");
+    }
 }
 
 buttons.forEach((button) => {
